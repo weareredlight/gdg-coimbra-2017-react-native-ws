@@ -13,10 +13,8 @@ it('renders without crashing', () => {
   expect(rendered).toBeTruthy();
 });
 
-
 it('renders main navigator', () => {
   const wrapper = shallow(<App />);
 
   expect(wrapper.find(Navigator).length).toBe(1);
 });
-

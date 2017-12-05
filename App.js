@@ -12,13 +12,14 @@ export default class App extends React.Component {
   search = async () => {
     const response = await search(this.state.q);
     const body = await response.json();
-    const searchResults = body.data.map(ele => ele.images.downsized.url); 
+    const searchResults = body.data.map(ele => ele.images.downsized.url);
 
     this.setState({ searchResults });
   };
 
   updateQuery = text => this.setState({ q: text });
-  saveGif = gif => this.state.saved.every(ele => ele !== gif) &&
+  saveGif = gif =>
+    this.state.saved.every(ele => ele !== gif) &&
     this.setState(({ saved }) => ({ saved: [...saved, gif] }));
 
   render() {
