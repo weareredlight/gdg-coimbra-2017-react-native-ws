@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "sdkVersion": "23.0.0",
+    "name": "Gdgiphy",
+    "orientation": "portrait",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gdg.devfest"
+    },
+    "android": {
+      "package": "com.gdg.devfest"
+    },
+    "androidStatusBarColor": "#212121",
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#212121"
+    }
+  }
+}
