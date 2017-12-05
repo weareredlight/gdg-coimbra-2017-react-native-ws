@@ -7,7 +7,7 @@ import search from './api';
 import Navigator from './Navigator';
 
 export default class App extends React.Component {
-  state = { searchResults: [], q: '' };
+  state = { searchResults: [], saved: [], q: '' };
 
   search = async () => {
     const response = await search(this.state.q);
@@ -18,6 +18,9 @@ export default class App extends React.Component {
   };
 
   updateQuery = text => this.setState({ q: text });
+  saveGif = gif =>
+    this.state.saved.every(ele => ele !== gif) &&
+    this.setState(({ saved }) => ({ saved: [...saved, gif] }));
 
   render() {
     return (
@@ -28,6 +31,10 @@ export default class App extends React.Component {
             updateQuery: this.updateQuery,
             searchResults: this.state.searchResults,
             query: this.state.q,
+            onPress: this.saveGif,
+          },
+          Saved: {
+            saved: this.state.saved,
           },
         }}
       />
