@@ -48,6 +48,7 @@ export default class App extends React.Component {
   };
 
   updateQuery = text => this.setState({ q: text });
+  deleteGif = gif => this.setState(({ saved }) => ({ saved: saved.filter(ele => ele !== gif) }));
   saveGif = gif => this.state.saved.every(ele => ele !== gif) &&
     this.setState(({ saved }) => ({ saved: [...saved, gif] }));
 
@@ -64,6 +65,7 @@ export default class App extends React.Component {
           },
           Saved: {
             saved: this.state.saved,
+            onPress: this.deleteGif,
           },
         }}
       />
