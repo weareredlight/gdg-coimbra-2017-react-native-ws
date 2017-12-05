@@ -10,6 +10,8 @@ Enzyme.configure({ adapter: new Adapter() });
 const updateQuery = jest.fn();
 const search = jest.fn();
 
+const renderComponent = props => <Search {...props} />;
+
 const props = searchResults => ({
   screenProps: {
     Search: {
@@ -22,11 +24,9 @@ const props = searchResults => ({
 });
 
 const results = [
- "https://pplware.sapo.pt/wp-content/uploads/2017/06/google_fotos.jpg",
- "https://pplware.sapo.pt/wp-content/uploads/2017/06/google_fotos.jpg",
+  'https://pplware.sapo.pt/wp-content/uploads/2017/06/google_fotos.jpg',
+  'https://pplware.sapo.pt/wp-content/uploads/2017/06/google_fotos.jpg',
 ];
-
-const renderComponent = props => <Search {...props} />;
 
 describe('search input', () => {
   const wrapper = shallow(renderComponent(props([])));
@@ -60,4 +60,3 @@ describe('search results', () => {
     expect(data).toBe(results);
   });
 });
-

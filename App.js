@@ -12,7 +12,7 @@ export default class App extends React.Component {
   search = async () => {
     const response = await search(this.state.q);
     const body = await response.json();
-    const searchResults = body.data.map(ele => ele.images.downsized.url); 
+    const searchResults = body.data.map(ele => ele.images.downsized.url);
 
     this.setState({ searchResults });
   };

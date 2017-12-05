@@ -19,7 +19,12 @@ export default class Search extends React.Component {
   renderItem = ({ item }) => <Item uri={item} width={width} height={100} />;
 
   render() {
-    const { query, updateQuery, search, searchResults } = this.props.screenProps.Search;
+    const {
+      query,
+      updateQuery,
+      search,
+      searchResults,
+    } = this.props.screenProps.Search;
 
     return (
       <View style={[StyleSheet.absoluteFill, container]}>
