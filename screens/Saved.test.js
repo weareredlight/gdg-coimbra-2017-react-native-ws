@@ -7,9 +7,7 @@ import Item from '../components/Item';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const renderComponent = props => (
-  <Saved {...props} />
-);
+const renderComponent = props => <Saved {...props} />;
 
 const props = saved => ({
   screenProps: {
@@ -20,8 +18,8 @@ const props = saved => ({
 });
 
 const images = [
- "https://pplware.sapo.pt/wp-content/uploads/2017/06/google_fotos.jpg",
- "https://pplware.sapo.pt/wp-content/uploads/2017/06/google_fotos.jpg",
+  'https://pplware.sapo.pt/wp-content/uploads/2017/06/google_fotos.jpg',
+  'https://pplware.sapo.pt/wp-content/uploads/2017/06/google_fotos.jpg',
 ];
 
 describe('saved images', () => {
