@@ -7,13 +7,10 @@ import Search from './Search';
 Enzyme.configure({ adapter: new Adapter() });
 import renderer from 'react-test-renderer';
 
-const renderComponent = props => (
-  <Search {...props} />
-);
+const renderComponent = props => <Search {...props} />;
 
 it('renders text info', () => {
   const wrapper = shallow(renderComponent());
 
   expect(wrapper.find(Text).get(0).props.children).toBe('Search Screen');
 });
-
