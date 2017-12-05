@@ -1,23 +1,42 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { TabNavigator } from 'react-navigation';
+import Search from './screens/Search';
+import Saved from './screens/Saved';
+
+export const Navigator = TabNavigator(
+  {
+    Search: { screen: Search, navigationOptions: { tabBarLabel: 'SEARCH' } },
+    Saved: { screen: Saved, navigationOptions: { tabBarLabel: 'SAVED' } },
+  },
+  {
+    animationEnabled: false,
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+      activeTintColor: '#212121',
+      inactiveTintColor: '#d3d3d3',
+      showIcon: false,
+      upperCaseLabel: true,
+      indicatorStyle: {
+        height: 0,
+      },
+      tabStyle: {
+        borderBottomWidth: 0,
+      },
+      labelStyle: {
+        marginBottom: 15,
+        fontWeight: 'bold',
+        fontSize: 18,
+      },
+      style: {
+        backgroundColor: 'white',
+      },
+    },
+  },
+);
 
 export default class App extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
+    return <Navigator />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
