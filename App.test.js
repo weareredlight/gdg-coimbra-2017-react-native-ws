@@ -1,7 +1,8 @@
 import React from 'react';
 import Enzyme, { shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import App, { Navigator } from './App';
+import App from './App';
+import Navigator from './Navigator';
 import Saved from './screens/Saved';
 
 Enzyme.configure({ adapter: new Adapter() });
