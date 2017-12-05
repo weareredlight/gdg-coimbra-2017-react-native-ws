@@ -2,13 +2,13 @@ import React from 'react';
 import Enzyme, { shallow, mount, render } from 'enzyme';
 import { Text } from 'react-native';
 import Adapter from 'enzyme-adapter-react-16';
-import Saved from './Saved';
+import Search from './Search';
 
 Enzyme.configure({ adapter: new Adapter() });
 import renderer from 'react-test-renderer';
 
 const renderComponent = props => (
-  <Saved {...props} />
+  <Search {...props} />
 );
 
 it('renders text info', () => {
