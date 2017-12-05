@@ -16,10 +16,22 @@ export default class Search extends React.Component {
     this.props.screenProps.Search.search();
   }
 
-  renderItem = ({ item }) => <Item uri={item} width={width} height={100} />;
+  renderItem = ({ item }) => (
+    <Item
+      uri={item}
+      width={width}
+      height={100}
+      onPress={() => this.props.screenProps.Search.onPress(item)}
+    />
+  );
 
   render() {
-    const { query, updateQuery, search, searchResults } = this.props.screenProps.Search;
+    const {
+      query,
+      updateQuery,
+      search,
+      searchResults,
+    } = this.props.screenProps.Search;
 
     return (
       <View style={[StyleSheet.absoluteFill, container]}>
