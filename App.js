@@ -5,6 +5,7 @@ import Search from './screens/Search';
 import Saved from './screens/Saved';
 import search from './api';
 import Navigator from './Navigator';
+import Toast, { DURATION } from 'react-native-easy-toast';
 
 export default class App extends React.Component {
   state = { searchResults: [], saved: [], q: '' };
@@ -17,29 +18,41 @@ export default class App extends React.Component {
     this.setState({ searchResults });
   };
 
+  saveFeedback = () => this.refs.toast.show('GIF saved!');
+  deleteFeedback = () => this.refs.toast.show('GIF deleted!');
   updateQuery = text => this.setState({ q: text });
-  deleteGif = gif => this.setState(({ saved }) => ({ saved: saved.filter(ele => ele !== gif) }));
+  deleteGif = gif =>
+    this.setState(
+      ({ saved }) => ({ saved: saved.filter(ele => ele !== gif) }),
+      this.deleteFeedback,
+    );
   saveGif = gif =>
     this.state.saved.every(ele => ele !== gif) &&
-    this.setState(({ saved }) => ({ saved: [...saved, gif] }));
+    this.setState(
+      ({ saved }) => ({ saved: [...saved, gif] }),
+      this.saveFeedback,
+    );
 
   render() {
     return (
-      <Navigator
-        screenProps={{
-          Search: {
-            search: this.search,
-            updateQuery: this.updateQuery,
-            searchResults: this.state.searchResults,
-            query: this.state.q,
-            onPress: this.saveGif,
-          },
-          Saved: {
-            saved: this.state.saved,
-            onPress: this.deleteGif,
-          },
-        }}
-      />
+      <View style={StyleSheet.absoluteFill}>
+        <Navigator
+          screenProps={{
+            Search: {
+              search: this.search,
+              updateQuery: this.updateQuery,
+              searchResults: this.state.searchResults,
+              query: this.state.q,
+              onPress: this.saveGif,
+            },
+            Saved: {
+              saved: this.state.saved,
+              onPress: this.deleteGif,
+            },
+          }}
+        />
+        <Toast ref="toast" />
+      </View>
     );
   }
 }
