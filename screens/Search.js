@@ -34,25 +34,41 @@ export default class Search extends React.Component {
     } = this.props.screenProps.Search;
 
     return (
-      <View style={[StyleSheet.absoluteFill, container]}>
-        <TextInput
-          value={query}
-          onChangeText={updateQuery}
-          placeholder="Search"
-          onSubmitEditing={search}
-        />
-        <FlatList
-          data={searchResults}
-          renderItem={this.renderItem}
-          keyExtractor={a => a}
-        />
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <TextInput
+            value={query}
+            onChangeText={updateQuery}
+            placeholder="Search"
+            onSubmitEditing={search}
+            style={styles.txtInput}
+            placeholderTextColor="#d3d3d3"
+          />
+          <FlatList
+            data={searchResults}
+            renderItem={this.renderItem}
+            keyExtractor={a => a}
+          />
+        </View>
       </View>
     );
   }
 }
 
-const container = {
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginTop: 80,
-};
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#212121',
+  },
+  header: {
+    marginHorizontal: 12,
+    width: '100%',
+    marginTop: 22,
+  },
+  txtInput: {
+    marginLeft: 12,
+    paddingBottom: 12,
+    width: '100%',
+    backgroundColor: '#212121',
+    color: 'white',
+  },
+});
